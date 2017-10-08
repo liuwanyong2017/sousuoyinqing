@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        
+        img {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 80px;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        .box {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        input,
+        .bar {
+            height: 40px;
+        }
+        
+        .bar {
+            float: right;
+            width: 150px;
+            position: relative;
+        }
+        
+        input {
+            width: 300px;
+            outline: none;
+        }
+        
+        .bar {
+            background: cornflowerblue;
+        }
+        
+        .bar a {
+            color: aliceblue;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .saerch li {
+            width: 300px;
+            height: 40px;
+        }
+        
+        .saerch li:hover {
+            background: cadetblue;
+        }
+        
+        .saerch {
+            display: none;
+            border: 1px solid;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <img src="/haha.jpg" alt="">
+
+    <div class="box">
+        <input type="text">
+        <div class="bar"><a href="">哈哈一下</a></div>
+        <div class="search">
+            <ul>
+
+            </ul>
+        </div>
+
+    </div>
+
+
+
+    <script>
+        function $(selection) {
+            return document.querySelector(selection)
+        }
+        document.querySelector('input').onkeyup = function() {
+            if (document.querySelector('input').value) {
+                $('.search').style.display = 'block '
+                $('.search').style.position = 'absolute'
+
+                $('.search ul').innerHTML = ''
+                var scr = document.createElement('script')
+                scr.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + document.querySelector('input').value + '&cb=haha'
+                $('body').appendChild(scr)
+                $('.bar a').href = 'https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=0&rsv_idx=1&tn=baidu&wd=' + document.querySelector('input').value
+            } else {
+                $('.search').style.display = 'none'
+            }
+        }
+
+
+
+        function haha(mes) {
+            console.log(mes.s)
+            mes.s.forEach(function(node) {
+
+                var li = document.createElement('li')
+                var createa = document.createElement('a')
+                createa.innerHTML = node
+                createa.href = 'https://www.baidu.com/s?ie=utf-8&f=3&rsv_bp=0&rsv_idx=1&tn=baidu&wd=' + node
+                li.appendChild(createa)
+                $('.search ul').appendChild(li)
+            })
+
+        }
+    </script>
+</body>
+
+</html>
